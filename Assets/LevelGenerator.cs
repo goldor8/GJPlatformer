@@ -39,6 +39,6 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        Generate(length);
+        SpawnLevel(Vector3.left, Generate(length));
     }
 }
