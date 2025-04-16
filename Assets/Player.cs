@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private Spawnpoint currentSpawnpoint;
-    private static float deathHeight = -10f;
+    public float deathHeight = -10f;
     public PlayerInput playerInput;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created

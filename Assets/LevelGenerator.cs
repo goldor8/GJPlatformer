@@ -22,7 +22,7 @@ public class LevelGenerator : MonoBehaviour
         return levelPartIndexes;
     }
 
-    void SpawnLevel(Vector3 offset, int[] parts)
+    public void SpawnLevel(Vector3 offset, int[] parts)
     {
         float hOffset = 0;
         for (int i = 0; i < parts.Length; i++)
