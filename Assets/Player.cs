@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     private Spawnpoint currentSpawnpoint;
     public float deathHeight = -10f;
+    public Vector2 baseSpawnpoint;
     public PlayerInput playerInput;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
     private void OnDie()
     {
         if(currentSpawnpoint == null)
-            transform.position = new Vector3(0, 0, 0);
+            transform.position = baseSpawnpoint;
         else
             transform.position = currentSpawnpoint.transform.position;
     }

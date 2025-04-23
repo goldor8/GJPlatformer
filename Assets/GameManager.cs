@@ -1,15 +1,29 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public LevelGenerator levelGenerator;
+    public List<PowerUp> powerUps;
     private int[] levelParts;
 
-    private void Start()
+    private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+        
         levelParts = levelGenerator.Generate(levelGenerator.length);
+    }
+    
+    public PowerUp GetRandomPowerUp()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, powerUps.Count);
+        return powerUps[randomIndex];
     }
 
     void OnPlayerJoined(PlayerInput playerInput)
@@ -19,6 +33,7 @@ public class GameManager : MonoBehaviour
         Transform playerContext = playerInput.transform.parent;
         playerContext.position += Vector3.up * 30 * playerInput.playerIndex;
         player.deathHeight += 30 * playerInput.playerIndex;
+        player.baseSpawnpoint += Vector2.up * 30 * playerInput.playerIndex;
         
         if (PlayerInput.all.Count == 2)
         {
